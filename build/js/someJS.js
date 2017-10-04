@@ -1,0 +1,1 @@
+var cities=["Sydney","Tokyo","Miami","Auckland"];cities.shift(),document.getElementById("msg").innerHTML=cities;
