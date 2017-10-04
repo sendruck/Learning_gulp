@@ -1,0 +1,21 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "There is some basic project to try gulp in action",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sendruck/Learning_gulp.git"
+  },
+  "author": "Olexandr Yakonveko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sendruck/Learning_gulp/issues"
+  },
+  "homepage": "https://github.com/sendruck/Learning_gulp#readme"
+}
