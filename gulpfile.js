@@ -1,7 +1,9 @@
  var gulp = require('gulp'),
      uglify = require('gulp-uglify'),
      sass = require('gulp-ruby-sass'),
-     plumber = require('gulp-plumber');
+     plumber = require('gulp-plumber'),
+     livereload = require('gulp-livereload'),
+     imagemin = require('gulp-imagemin');
  
 // Scripts Task 
 //Uglifies, 
@@ -24,14 +26,27 @@ gulp.task('styles', function() {
      style: 'compressed'
     })    
      .on('error', errorLog)
-     .pipe(gulp.dest('css'));
+     .pipe(gulp.dest('css'))
+     .pipe(livereload());
    });
+
+//Image Task
+//Compress images
+gulp.task('image', function(){
+   gulp.src('img/*.*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('build/img'));    
+});
 
 //Watch task
 //Watch JS
 gulp.task('watch', function() {
+
+    var server = livereload();
+    
+
     gulp.watch('*.js', ['scripts']);
     gulp.watch('scss/*.scss', ['styles']);
 }); 
     
- gulp.task('default', ['scripts', 'watch']);  
+ gulp.task('default', ['scripts', 'watch', 'image']);  
