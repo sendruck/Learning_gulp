@@ -7,10 +7,15 @@
 //Uglifies, 
 gulp.task('scripts', function() {
     gulp.src('*.js')
-        .pipe(plumber())
         .pipe(uglify())
+        .on('error', errorLog)
         .pipe(gulp.dest('build/js'));  
 });
+
+function errorLog(error) {
+    console.error.bind(error);
+    this.emit('end');
+}
 
 
 //Styles Task 
@@ -18,7 +23,7 @@ gulp.task('styles', function() {
     return sass('scss/*.scss', {
      style: 'compressed'
     })    
-     .pipe(plumber())    
+     .on('error', errorLog)
      .pipe(gulp.dest('css'));
    });
 
