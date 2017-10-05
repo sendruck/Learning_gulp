@@ -3,7 +3,8 @@
      sass = require('gulp-ruby-sass'),
      plumber = require('gulp-plumber'),
      livereload = require('gulp-livereload'),
-     imagemin = require('gulp-imagemin');
+     imagemin = require('gulp-imagemin'),
+     prefix = require('gulp-autoprefixer');
  
 // Scripts Task 
 //Uglifies, 
@@ -23,9 +24,10 @@ function errorLog(error) {
 //Styles Task 
 gulp.task('styles', function() {   
     return sass('scss/*.scss', {
-     style: 'compressed'
+     style: 'expended'
     })    
      .on('error', errorLog)
+     .pipe(prefix('last 2 versions'))
      .pipe(gulp.dest('css'))
      .pipe(livereload());
    });
